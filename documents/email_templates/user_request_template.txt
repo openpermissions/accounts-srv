@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+    <title>[The Open Permissions Platform] You have made a request to join {organisation}.</title>
+  </head>
+  <body topmargin="100" leftmargin="0" marginheight="0" marginwidth="0" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background: #ffffff; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; line-height: 19px; margin: 0; min-width: 100%; padding: 0; text-align: left; width: 100% !important" bgcolor="#fafafa">
+
+    <table class="body" style="background: #ffffff; border-collapse: collapse; border-spacing: 0; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; height: 100%; line-height: 19px; margin: 0; padding: 10px; text-align: left; vertical-align: top; width: 100%" bgcolor="#fafafa">
+      <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
+        <td class="center" align="center" valign="top" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: center; vertical-align: top; word-break: break-word">
+          <center style="min-width: 580px; width: 100%">
+
+            <table class="container" style="border-collapse: collapse; border-spacing: 0; margin: 0 auto; padding: 0; text-align: inherit; vertical-align: top; width: 580px">
+              <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
+                <td style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; word-break: break-word" align="left" valign="top">
+
+                  <table class="email-header" style="border-collapse: collapse; border-spacing: 0; margin-top: 20px; padding: 0; text-align: left; vertical-align: top; width: 100%">
+                    <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
+                      <td class="center" align="center" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: center; vertical-align: top; word-break: break-word" valign="top">
+                        <center style="min-width: 580px; width: 100%">
+                        </center>
+                      </td>
+                      <td class="expander" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; visibility: hidden; width: 0px; word-break: break-word" align="left" valign="top"></td>
+                    </tr>
+                  </table>
+
+                  <table class="wrapper email-body" style="background: #ffffff; border-collapse: collapse; border-radius: 3px !important; border-spacing: 0; border: 1px solid #dddddd; box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important; padding: 0; text-align: left; vertical-align: top" bgcolor="#ffffff">
+                    <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
+                      <td class="text-pad" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; word-break: break-word" align="left" valign="top">
+
+                        <div class="email-content" style="color: #333333; font-size: 14px; font-weight: normal; line-height: 20px; margin: 20px">
+
+                          <p style="color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; line-height: 19px; margin: 0 0 10px; padding: 0; text-align: left" align="left">
+                            Hi <strong>{name}</strong>! <br><br>
+                            You recently made a request to {request_type} the {entity_type} named <strong>{entity_name}.</strong>
+                            <br><br>
+                            This request is now with an Administrator and will be reviewed shortly.
+                            <br><br>
+                            You will receive an email when the Administrator accepts or rejects this request.
+                            If you have any questions please get in contact with us at
+                            <a href="support-copyrighthub@cde.catapult.org.uk">support-copyrighthub@cde.catapult.org.uk</a>
+                          </p>
+
+
+                          <hr style="background: #d9d9d9; border: none; color: #d9d9d9; height: 1px; margin: 10px 0 20px">
+
+                          <p class="email-text-small email-text-gray" style="color: #777777; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; font-weight: normal; line-height: 19px; margin: 0; padding: 0; text-align: left" align="left">
+                            You&#8217;re receiving this email because you recently
+                            requested to {request_type} a(n) {entity_type}.
+                            If this wasn&#8217;t you, please ignore this email.
+                          </p>
+
+
+                        </div>
+
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table class="email-footer" style="border-collapse: collapse; border-spacing: 0; margin-bottom: 30px; padding: 0; text-align: left; vertical-align: top; width: 100%">
+                    <tr style="padding: 0; text-align: left; vertical-align: top" align="left">
+                      <td class="center" align="center" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: center; vertical-align: top; word-break: break-word" valign="top">
+                        <center style="min-width: 580px; width: 100%">
+                          <div class="wordmark" style="margin-bottom: 25px; margin-top: 25px; text-align: center !important" align="center !important">
+                            <a href="http://developer.copyrighthub.org/">
+                              <img class="center" src="https://s3-eu-west-1.amazonaws.com/copyrighthub-matrix-images/copyright-hub-logo.png" width=auto height="67" style="-ms-interpolation-mode: bicubic; clear: both; display: block; float: none; height: 67px; margin: 0 auto; outline: none; text-decoration: none; width: auto" align="none">
+                            </a>
+                          </div>
+                          <p class="footer-text" style="color: #888888; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; font-weight: normal; line-height: 1.5; margin: 0 0 10px; padding: 0; text-align: center" align="center">
+                          Sent by <strong>The Open Permissions Platform</strong> Team.
+                          </p>
+                        </center>
+                      </td>
+                      <td class="expander" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: left; vertical-align: top; visibility: hidden; width: 0px; word-break: break-word" align="left" valign="top"></td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+            </table>
+
+          </center>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>

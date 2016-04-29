@@ -1,0 +1,14 @@
+{
+  "registry": [
+    {
+      "_id": "administrator",
+      "name": "Administrator",
+      "type": "role"
+    },
+    {
+      "_id": "user",
+      "name": "User",
+      "type": "role"
+    }
+  ]
+}

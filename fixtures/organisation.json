@@ -1,0 +1,50 @@
+{
+  "registry": [{
+    "_id": "hogwarts",
+    "type": "organisation",
+    "name": "Hogwarts",
+    "description": "Hogwarts School of Witchcraft and Wizardry, shortened Hogwarts, is a fictional British school of magic for students aged eleven to eighteen, and is the primary setting for the first six books in J.K. Rowling's Harry Potter series.",
+    "address": "Somewhere in Scotland",
+    "phone": "0845 084 0900",
+    "email": "hogwarts@example.com",
+    "twitter": "digicatapult",
+    "state": "approved",
+    "created_by": "testadmin"
+  }, {
+    "_id": "testco",
+    "type": "organisation",
+    "name": "TestCo",
+    "description": "A fictional company for testing purposes",
+    "address": "Digital Catapult\n101 Euston Road London\nNW1 2RA",
+    "phone": "0300 1233 101",
+    "email": "exampleco@digicat.io",
+    "twitter": "DigiCatapult",
+    "website": "http://testco.digicat.io",
+    "state": "approved",
+    "created_by": "testadmin",
+    "services": {
+        "4225f4774d6874a68565a04130001144": {
+            "type": "service",
+            "name": "testco_external",
+            "location": "http://fixture.test",
+            "service_type": "external",
+            "permissions": [],
+            "created_by": "testadmin",
+            "state": "approved"
+        }
+    }
+  }, {
+    "_id": "developerco",
+    "website": "http://developerco.digicat.io",
+    "name": "Developer Company",
+    "twitter": "DigiCatapult",
+    "phone": "0300 1233 101",
+    "state": "approved",
+    "address": "Digital Catapult\n101 Euston Road London\nNW1 2RA",
+    "type": "organisation",
+    "email": "developerco@digicat.io",
+    "description": "A fictional company used only to create services for testing purposes",
+    "state": "approved",
+    "created_by": "testadmin"
+  }]
+}

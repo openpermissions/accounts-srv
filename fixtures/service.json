@@ -1,0 +1,13 @@
+{
+  "registry": [{
+    "_id": "4225f4774d6874a68565a04130001144",
+    "organisation_id": "testco",
+    "type": "service",
+    "name": "testco_external",
+    "location": "",
+    "service_type": "external",
+    "permissions": [],
+    "created_by": "testadmin",
+    "state": "approved"
+  }]
+}
