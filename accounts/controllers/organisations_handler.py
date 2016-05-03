@@ -133,17 +133,19 @@ class OrganisationReferenceLinks(BaseHandler):
     @gen.coroutine
     def post(self, organisation_id):
         """Query for the reference links for an organisation"""
-        data = self.get_json_body(required=['asset_id', 'asset_id_type'])
-        asset_id = data['asset_id']
-        asset_id_type = data['asset_id_type']
+        data = self.get_json_body(required=['source_id', 'source_id_type'])
+        source_id = data['source_id']
+        source_id_type = data['source_id_type']
 
         organisation = yield perch.Organisation.get(organisation_id)
         links = getattr(organisation, 'reference_links', {})
 
-        result = {k: v.format(asset_id=asset_id) for k, v in links.items()
-                  if k == asset_id_type}
+        link = links.get(source_id_type)
+
+        if not link:
+            raise HTTPError(404, 'Not Found')
 
         self.finish({
             'status': 200,
-            'data': result
+            'data': link.format(source_id=source_id)
         })

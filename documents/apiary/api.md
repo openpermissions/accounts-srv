@@ -1397,17 +1397,17 @@ Logged in as System Administrator
 | Property        | Description        | Type   |
 | :-------        | :----------        | :---   |
 | organisation_id | Organisation ID    | string |
-| links           | Link Object        | object |
+| link            | Link URL           | url    |
 
 
 ### Get organisations Reference links [POST]
 Get the reference links for all organisations. The URLs can be used to find licensing options for an offer not found in a repository.
 
 #### Input
-| Property      | Description                      | Type   | Mandatory |
-| :-------      | :----------                      | :---   | :---      |
-| asset_id      | The ID of the asset              | string | yes       |
-| asset_id_type | The type of the asset            | string | yes       |
+| Property       | Description                      | Type   | Mandatory |
+| :-------       | :----------                      | :---   | :---      |
+| source_id      | The ID of the asset              | string | yes       |
+| source_id_type | The type of the asset            | string | yes       |
 
 #### Output
 | Property | Description                        | Type   |
@@ -1431,15 +1431,11 @@ Get the reference links for all organisations. The URLs can be used to find lice
                 "data": [
                     {
                         "organisation_id": "exampleco",
-                        "links": {
-                            "asset_id_type1: "https://exampleco.com/asset1"
-                        }
+                        "link": "https://exampleco.com/asset1"
                     },
                     {
                         "organisation_id": "testco",
-                        "links": {
-                            "asset_id_type1: "https://testco.com/asset1"
-                        }
+                        "link": "https://testco.com/asset1"
                     },
                 ]
             }
@@ -2066,16 +2062,16 @@ Logged in as System Administrator
 Query for the reference links for an organisation. The URLs can be used to find licensing options for an offer not found in a repository.
 
 #### Input
-| Property      | Description                      | Type   | Mandatory |
-| :-------      | :----------                      | :---   | :---      |
-| asset_id      | The ID of the asset              | string | yes       |
-| asset_id_type | The type of the asset            | string | yes       |
+| Property       | Description                      | Type   | Mandatory |
+| :-------       | :----------                      | :---   | :---      |
+| source_id      | The ID of the asset              | string | yes       |
+| source_id_type | The type of the asset            | string | yes       |
 
 #### Output
 | Property | Description                      | Type   |
 | :------- | :----------                      | :---   |
 | status   | The status of the request        | number |
-| data     | The organisation's links object  | object |
+| data     | The organisation's link url      | url    |
 
 + Request An organisation's reference links
 
@@ -2089,9 +2085,7 @@ Query for the reference links for an organisation. The URLs can be used to find 
 
             {
                 "status": 200,
-                "data": {
-                    "asset_id_type1: "https://exampleco.com/asset1"
-                }
+                "data": "https://exampleco.com/asset1"
             }
 
 # Group Organisations for User
