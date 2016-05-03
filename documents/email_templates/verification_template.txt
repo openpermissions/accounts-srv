@@ -41,11 +41,11 @@
                           <div class="cta-button-wrap cta-button-wrap-centered" style="color: #ffffff; padding: 20px 0 33px; text-align: center" align="center">
                           <!--[if mso]>
                           <p style="line-height:0px;height:0;font-size:1px;margin:0;padding:0;">&nbsp;</p>
-                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://services.copyrighthub.org/verify?id={user_id}&code={verification_hash}" style="height:40px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#4183C4">
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://services.openpermissions.org/verify?id={user_id}&code={verification_hash}" style="height:40px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#4183C4">
                             <w:anchorlock/>
                             <center>
                           <![endif]-->
-                          <a class="cta-button" href="http://services.copyrighthub.org/verify?id={user_id}&code={verification_hash}" style="-webkit-border-radius: 3px; -webkit-text-size-adjust: none; background: #D4CF23; border-radius: 3px; box-shadow: 0px 3px 0px #25588c; color: #ffffff; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; font-weight: bold; letter-spacing: normal; margin: 0 auto; padding: 12px 24px; text-align: center; text-decoration: none; width: auto !important">Verify email address</a>
+                          <a class="cta-button" href="http://services.openpermissions.org/verify?id={user_id}&code={verification_hash}" style="-webkit-border-radius: 3px; -webkit-text-size-adjust: none; background: #D4CF23; border-radius: 3px; box-shadow: 0px 3px 0px #25588c; color: #ffffff; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; font-weight: bold; letter-spacing: normal; margin: 0 auto; padding: 12px 24px; text-align: center; text-decoration: none; width: auto !important">Verify email address</a>
                           <!--[if mso]>
                             </center>
                           </v:roundrect>
@@ -57,7 +57,7 @@
                           
                           <p class="email-text-small email-text-gray" style="color: #777777; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; font-weight: normal; line-height: 19px; margin: 0 0 10px; padding: 0; text-align: left" align="left">
                             Button not working? Paste the following link into your browser:<br>
-                            <a href="http://services.copyrighthub.org/verify?id={user_id}&code={verification_hash}" style="color: #4183C4; text-decoration: underline">http://services.copyrighthub.org/verify?id={user_id}&code={verification_hash}</a>
+                            <a href="http://services.openpermissions.org/verify?id={user_id}&code={verification_hash}" style="color: #4183C4; text-decoration: underline">http://services.openpermissions.org/verify?id={user_id}&code={verification_hash}</a>
                           </p>
                           
                           <p class="email-text-small email-text-gray" style="color: #777777; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; font-weight: normal; line-height: 19px; margin: 0; padding: 0; text-align: left" align="left">
@@ -78,8 +78,8 @@
                       <td class="center" align="center" style="-moz-hyphens: auto; -webkit-hyphens: auto; border-collapse: collapse !important; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: normal; hyphens: auto; line-height: 19px; margin: 0; padding: 0; text-align: center; vertical-align: top; word-break: break-word" valign="top">
                         <center style="min-width: 580px; width: 100%">
                           <div class="wordmark" style="margin-bottom: 25px; margin-top: 25px; text-align: center !important" align="center !important">
-                            <a href="http://developer.copyrighthub.org/"> 
-                              <img class="center" src="https://s3-eu-west-1.amazonaws.com/copyrighthub-matrix-images/copyright-hub-logo.png" width=auto height="67" style="-ms-interpolation-mode: bicubic; clear: both; display: block; float: none; height: 67px; margin: 0 auto; outline: none; text-decoration: none; width: auto" align="none">
+                            <a href="http://developer.openpermissions.org/"> 
+                              <img class="center" src="https://s3-eu-west-1.amazonaws.com/opp-assets/images/logo.png" width=auto height="67" style="-ms-interpolation-mode: bicubic; clear: both; display: block; float: none; height: 67px; margin: 0 auto; outline: none; text-decoration: none; width: auto" align="none">
                             </a>
                           </div>
                           <p class="footer-text" style="color: #888888; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 12px; font-weight: normal; line-height: 1.5; margin: 0 0 10px; padding: 0; text-align: center" align="center">
