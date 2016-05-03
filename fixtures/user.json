@@ -11,14 +11,15 @@
     "organisations": {
       "global": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       },
       "hogwarts": {
         "role": "administrator",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }, {
     "_id": "cuthbert",
     "last_name": "Cuthbert",
@@ -31,14 +32,15 @@
     "organisations": {
       "global": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       },
       "hogwarts": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }, {
     "_id": "cathy",
     "last_name": "Catherine",
@@ -51,14 +53,15 @@
     "organisations": {
       "global": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       },
       "testco": {
         "role": "administrator",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }, {
     "_id": "katie",
     "last_name": "Katie",
@@ -71,14 +74,15 @@
     "organisations": {
       "global": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       },
       "testco": {
         "role": "user",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }, {
     "_id": "testadmin",
     "last_name": "Admin",
@@ -91,10 +95,11 @@
     "organisations": {
       "global": {
         "role": "administrator",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }, {
     "_id": "developer",
     "last_name": "Developer",
@@ -107,9 +112,10 @@
     "organisations": {
       "global": {
         "role": "administrator",
-        "join_state": "approved"
+        "state": "approved"
       }
     },
-    "verified": true
+    "verified": true,
+    "state": "approved"
   }]
 }

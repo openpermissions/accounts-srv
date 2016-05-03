@@ -33,7 +33,7 @@ class SecretsHandler(BaseHandler):
     def get(self, service_id):
         """Get service client secrets"""
         service = yield perch.Service.get(service_id)
-        approved = service.state == State.approved.value
+        approved = service.state == State.approved
 
         if not (self.user.is_user(service.organisation_id) and approved):
             raise HTTPError(403, 'Forbidden')
@@ -84,7 +84,7 @@ class Secret(BaseHandler):
         secret = yield perch.OAuthSecret.get(secret)
         yield secret.delete(self.user)
 
-        audit_log.info(self, "secret for service created, service id: {}".format(service_id))
+        audit_log.info(self, "secret for service deleted, service id: {}".format(service_id))
 
         self.finish({
             'status': 200,

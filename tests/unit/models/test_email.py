@@ -146,7 +146,7 @@ def test_send_request_update_email_approved(send_email):
         result = yield email.send_request_update_email(
             USER,
             ORGANISATION,
-            State.approved.value,
+            State.approved,
             ADMIN,
             'join')
 
@@ -163,7 +163,7 @@ def test_send_request_update_email_rejected(send_email):
         result = yield email.send_request_update_email(
             USER,
             ORGANISATION,
-            State.rejected.value,
+            State.rejected,
             ADMIN,
             'join'
         )

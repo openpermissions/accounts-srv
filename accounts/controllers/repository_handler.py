@@ -56,7 +56,7 @@ class OrganisationRepositories(BaseHandler):
                .format(organisation_id, repository.id, data))
         audit_log.info(self, msg)
 
-        if repository.state == State.pending.value:
+        if repository.state == State.pending:
             yield email.send_repository_request_emails(self.user, repository)
 
         result = yield repository.with_relations(user=self.user)
@@ -90,14 +90,14 @@ class Respository(BaseHandler):
     def delete(self, repository_id):
         """Delete a repository"""
         repository = yield perch.Repository.get(repository_id)
-        yield repository.delete(self.user)
+        yield repository.update(self.user, state=State.deactivated.name)
 
-        audit_log.info(self, "deleted repository, repository id: {}".format(repository_id))
+        audit_log.info(self, "deactivated repository, repository id: {}".format(repository_id))
 
         self.finish({
             'status': 200,
             'data': {
-                'message': 'repository deleted'
+                'message': 'repository deactivated'
             }
         })
 

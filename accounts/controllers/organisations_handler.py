@@ -21,6 +21,7 @@
 import couch
 import perch
 from perch import exceptions
+from perch.model import State
 from koi import auth
 from koi.base import HTTPError
 from tornado import gen
@@ -75,16 +76,16 @@ class Organisation(BaseHandler):
     def delete(self, organisation_id):
         """Delete an organisation"""
         organisation = yield perch.Organisation.get(organisation_id)
-        yield organisation.delete(self.user)
+        yield organisation.update(self.user, state=State.deactivated.name)
         yield perch.User.remove_organisation_from_all(organisation_id)
 
-        audit_log.info(self, "organisation deleted, organisation id:{}"
+        audit_log.info(self, "organisation deactivated, organisation id:{}"
                        .format(organisation_id))
 
         self.finish({
             'status': 200,
             'data': {
-                'message': 'organisation deleted'
+                'message': 'organisation deactivated'
             }
         })
 

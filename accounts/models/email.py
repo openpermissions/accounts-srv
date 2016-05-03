@@ -142,9 +142,9 @@ def send_request_update_email(user, entity, state, admin_user, request_type):
     :param admin_user: the user who has changed state
     :param request_type: the request type
     """
-    if state == State.approved.value:
+    if state == State.approved:
         result = yield _send_approval_email(user, entity, request_type)
-    elif state == State.rejected.value:
+    elif state == State.rejected:
         result = yield _send_rejection_email(
             user, entity, admin_user, request_type)
     else:
@@ -226,7 +226,7 @@ def _send_rejection_email(user, entity, admin_user, request_type):
 
     :param user: the user
     :param entity: entity the user requested to join
-    :param admin_user: the user who has changed the join_state
+    :param admin_user: the user who has changed the state
     :param request_type: the request type
     """
     with open(REQUEST_REJECTED_EMAIL_PATH) as template:
