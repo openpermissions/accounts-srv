@@ -32,11 +32,13 @@ class OrganisationRepositories(BaseHandler):
     def get(self, organisation_id):
         """Get repositories for an organisation"""
         organisation = yield perch.Organisation.get(organisation_id)
+
         repos = [perch.Repository(parent=organisation,
                                   organisation_id=organisation_id,
                                   id=repo_id,
                                   **repo)
-                 for repo_id, repo in organisation.repositories.items()]
+                 for repo_id, repo in organisation.repositories.items() if repo['state'] != State.deactivated.name]
+
         repositories = yield [x.with_relations(user=self.user) for x in repos]
 
         self.finish({'status': 200, 'data': repositories})
