@@ -28,17 +28,17 @@ class ReferenceLinks(BaseHandler):
     @gen.coroutine
     def post(self):
         """Query for all organisations' reference links"""
-        data = self.get_json_body(required=['asset_id', 'asset_id_type'])
-        asset_id = data['asset_id']
-        asset_id_type = data['asset_id_type']
+        data = self.get_json_body(required=['source_id', 'source_id_type'])
+        source_id = data['source_id']
+        source_id_type = data['source_id_type']
 
-        links = yield reference_links.get(key=asset_id_type)
+        links = yield reference_links.get(key=source_id_type)
         results = []
 
         for result in links['rows']:
             value = result['value']
-            link = value['links'][asset_id_type].format(asset_id=asset_id)
-            value['links'][asset_id_type] = link
+            link = value['link'].format(source_id=source_id)
+            value['link'] = link
             results.append(value)
 
         self.finish({
