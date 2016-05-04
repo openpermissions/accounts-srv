@@ -24,7 +24,7 @@ setup(
     version=accounts.__version__,
     description='Open Permissions Platform Accounts Service',
     author='Open Permissions Platform Coalition',
-    author_email='support-copyrighthub@cde.catapult.org.uk',
+    author_email='support@openpermissions.org',
     url='https://github.com/openpermissions/accounts-srv',
     packages=find_packages(exclude=['test']),
     entry_points={
