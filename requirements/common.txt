@@ -10,4 +10,4 @@ futures==3.0.3
 oauth
 opp-chub==1.0.5
 opp-koi==1.0.8
-git+https://github.com/openpermissions/perch.git@0.14.0
+git+https://github.com/openpermissions/perch.git@0.15.3

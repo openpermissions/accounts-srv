@@ -88,15 +88,15 @@ class UserOrgsHandler(BaseHandler):
     @coroutine
     def get(self, user_id):
         """ Gets all organisations associated with a user """
-        join_state = self.get_argument('join_state', None)
-        organisations = yield perch.Organisation.user_organisations(user_id, join_state)
+        state = self.get_argument('state', None)
+        organisations = yield perch.Organisation.user_organisations(user_id, state)
         user = yield perch.User.get(user_id)
         user_orgs = getattr(user, 'organisations', {})
 
         result = [{
             'id': x.id,
             'name': x.name,
-            'join_state': user_orgs.get(x.id, {}).get('join_state')
+            'state': user_orgs.get(x.id, {}).get('state')
         } for x in organisations]
 
         self.finish({
@@ -115,7 +115,7 @@ class UserOrgsHandler(BaseHandler):
         except couch.NotFound:
             raise HTTPError(400, 'Organisation does not exist')
 
-        if organisation.state != State.approved.value:
+        if organisation.state != State.approved:
             raise HTTPError(400, 'Organisation is not approved')
 
         user_org = yield perch.UserOrganisation.create(
@@ -152,7 +152,7 @@ class UserOrgHandler(BaseHandler):
                 'id': organisation_id,
                 'name': organisation.name,
                 'role': user_org.role,
-                'join_state': user_org.join_state
+                'state': user_org.state.name
             }
         })
 
@@ -163,22 +163,18 @@ class UserOrgHandler(BaseHandler):
         user_org = yield perch.UserOrganisation.get([user_id, organisation_id])
 
         body = self.get_json_body()
-        # TODO: change role_id to role
-        if not ('join_state' in body or 'role_id' in body):
-            raise HTTPError(400, 'join_state or role_id is required')
-
-        if 'role_id' in body:
-            body['role'] = body.pop('role_id')
+        if not ('state' in body or 'role' in body):
+            raise HTTPError(400, 'state or role is required')
 
         yield user_org.update(self.user, **body)
 
-        if 'join_state' in body:
+        if 'state' in body:
             # Send email to user notifying of change in join state
             organisation = yield perch.Organisation.get(organisation_id)
             yield email.send_request_update_email(
                 user_org.parent,
                 organisation,
-                body['join_state'],
+                body['state'],
                 self.user,
                 'join')
 
@@ -189,9 +185,9 @@ class UserOrgHandler(BaseHandler):
     def delete(self, user_id, organisation_id):
         """ Delete a user's organisation """
         user_org = yield perch.UserOrganisation.get([user_id, organisation_id])
-        yield user_org.delete(self.user)
+        yield user_org.update(self.user, state=State.deactivated.name)
 
-        msg = ("deleted user-organisation relation, user id: {}, "
+        msg = ("deactivated user-organisation relation, user id: {}, "
                "organisation id: {}".format(user_id, organisation_id))
         audit_log.info(self, msg)
 
@@ -226,11 +222,11 @@ class UserRolesHandler(BaseHandler):
         if not self.user.is_admin():
             raise HTTPError(403, 'Forbidden')
 
-        data = self.get_json_body(required=['role_id'])
-        role = data['role_id']
+        data = self.get_json_body(required=['role'])
+        role = data['role']
 
         user = yield perch.User.get(user_id)
-        global_role = user.organisations.get('global', {'join_state': 'approved'})
+        global_role = user.organisations.get('global', {'state': 'approved'})
         global_role['role'] = role
         user.organisations['global'] = global_role
         # TODO: change model so don't need to call _save
@@ -282,13 +278,13 @@ class User(BaseHandler):
     def delete(self, user_id):
         """Delete a user"""
         user = yield perch.User.get(user_id)
-        yield user.delete(self.user)
+        yield user.update(self.user, state=State.deactivated.name)
 
-        audit_log.info(self, "deleted user, user id: {}".format(user_id))
+        audit_log.info(self, "deactivated user, user id: {}".format(user_id))
 
         self.finish({
             'status': 200,
-            'data': {'message': 'user deleted'}
+            'data': {'message': 'user deactivated'}
         })
 
 

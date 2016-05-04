@@ -80,14 +80,14 @@ class Service(BaseHandler):
     def delete(self, service_id):
         """Delete a service"""
         service = yield perch.Service.get(service_id)
-        yield service.delete(self.user)
+        yield service.update(self.user, state=State.deactivated.name)
 
-        audit_log.info(self, "deleted service, service id: {}".format(service_id))
+        audit_log.info(self, "deactivated service, service id: {}".format(service_id))
 
         self.finish({
             'status': 200,
             'data': {
-                'message': 'service deleted'
+                'message': 'service deactivated'
             }
         })
 
@@ -139,7 +139,7 @@ class OrgServicesHandler(BaseHandler):
                .format(organisation_id, service.id, data))
         audit_log.info(self, msg)
 
-        if service.state == State.pending.value:
+        if service.state == State.pending:
             yield email.send_create_request_emails(self.user, service)
 
         self.finish({

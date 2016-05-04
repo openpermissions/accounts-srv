@@ -1172,7 +1172,7 @@ Logged in
 | :-------        | :----------        | :---   |
 | organisation_id | Organisation ID    | string |
 | role            | Role Object        | object |
-| join_state      | Join state of join | string |
+| state      | Join state of join | string |
 
 + Request all organisation-roles (application/json)
 
@@ -1194,7 +1194,7 @@ Logged in
                             "name": "User",
                             "id": "user"
                             },
-                    "join_state": "approved"
+                    "state": "approved"
                     },
                     {
                     "organisation_id": "org1",
@@ -1202,7 +1202,7 @@ Logged in
                             "name": "Admin",
                             "id": "admin"
                             },
-                    "join_state": "approved"
+                    "state": "approved"
                     }
                 ]
             }
@@ -1278,7 +1278,7 @@ Logged in as System Administrator
 #### Input
 | Property  | Description   | Type   | Mandatory |
 | :-------  | :----------   | :---   | :-------- |
-| role_id   | Id of role    | string | yes       |
+| role      | New Role      | string | yes       |
 
 #### Output
 | Property | Description                    | Type   |
@@ -1296,7 +1296,7 @@ Logged in as System Administrator
     + Body
 
             {
-                "role_id": "admin"
+                "role": "admin"
             }
 
 + Response 200 (application/json; charset=UTF-8)
@@ -1313,7 +1313,7 @@ Logged in as System Administrator
                     "verified": True,
                     "organisations": {
                         "global": {
-                            "join_state": "approved",
+                            "state": "approved",
                             "role": "admin"
                         }
                     }
@@ -1331,7 +1331,7 @@ Logged in as System Administrator
     + Body
 
             {
-                "role_id": "invalid_role"
+                "role": "invalid_role"
             }
 
 + Response 400 (application/json; charset=UTF-8)
@@ -1397,17 +1397,17 @@ Logged in as System Administrator
 | Property        | Description        | Type   |
 | :-------        | :----------        | :---   |
 | organisation_id | Organisation ID    | string |
-| links           | Link Object        | object |
+| link            | Link URL           | url    |
 
 
 ### Get organisations Reference links [POST]
 Get the reference links for all organisations. The URLs can be used to find licensing options for an offer not found in a repository.
 
 #### Input
-| Property      | Description                      | Type   | Mandatory |
-| :-------      | :----------                      | :---   | :---      |
-| asset_id      | The ID of the asset              | string | yes       |
-| asset_id_type | The type of the asset            | string | yes       |
+| Property       | Description                      | Type   | Mandatory |
+| :-------       | :----------                      | :---   | :---      |
+| source_id      | The ID of the asset              | string | yes       |
+| source_id_type | The type of the asset            | string | yes       |
 
 #### Output
 | Property | Description                        | Type   |
@@ -1431,15 +1431,11 @@ Get the reference links for all organisations. The URLs can be used to find lice
                 "data": [
                     {
                         "organisation_id": "exampleco",
-                        "links": {
-                            "asset_id_type1: "https://exampleco.com/asset1"
-                        }
+                        "link": "https://exampleco.com/asset1"
                     },
                     {
                         "organisation_id": "testco",
-                        "links": {
-                            "asset_id_type1: "https://testco.com/asset1"
-                        }
+                        "link": "https://testco.com/asset1"
                     },
                 ]
             }
@@ -2066,16 +2062,16 @@ Logged in as System Administrator
 Query for the reference links for an organisation. The URLs can be used to find licensing options for an offer not found in a repository.
 
 #### Input
-| Property      | Description                      | Type   | Mandatory |
-| :-------      | :----------                      | :---   | :---      |
-| asset_id      | The ID of the asset              | string | yes       |
-| asset_id_type | The type of the asset            | string | yes       |
+| Property       | Description                      | Type   | Mandatory |
+| :-------       | :----------                      | :---   | :---      |
+| source_id      | The ID of the asset              | string | yes       |
+| source_id_type | The type of the asset            | string | yes       |
 
 #### Output
 | Property | Description                      | Type   |
 | :------- | :----------                      | :---   |
 | status   | The status of the request        | number |
-| data     | The organisation's links object  | object |
+| data     | The organisation's link url      | url    |
 
 + Request An organisation's reference links
 
@@ -2089,9 +2085,7 @@ Query for the reference links for an organisation. The URLs can be used to find 
 
             {
                 "status": 200,
-                "data": {
-                    "asset_id_type1: "https://exampleco.com/asset1"
-                }
+                "data": "https://exampleco.com/asset1"
             }
 
 # Group Organisations for User
@@ -2102,14 +2096,14 @@ Query for the reference links for an organisation. The URLs can be used to find 
 | id         | Organisation ID              |
 | name       | Organisation name            |
 | state      | Organisation State           |
-| join_state | User-Organisation Join State |
+| state | User-Organisation Join State |
 | role       | User-Organisation Role       |
 
-## Organisations for User resource [/v1/accounts/users/{user_id}/organisations{?join_state}]
+## Organisations for User resource [/v1/accounts/users/{user_id}/organisations{?state}]
 
 + Parameters
     + user_id (required, string, `user1`) ... Id of the user.
-    + join_state (optional, string)
+    + state (optional, string)
         State of the user-organisation join
         + Members
             + `approved`
@@ -2128,7 +2122,7 @@ Logged in
 | data     | Array of User-Organisation objects | array  |
 
 + Parameters
-    + join_state (optional, string)
+    + state (optional, string)
         State of the user-organisation join
         + Members
             + `approved`
@@ -2153,12 +2147,12 @@ Logged in
                     "id": "4abf6deef518043137abeefb0d005f66",
                     "name": "example organisation",
                     "role": "user",
-                    "join_state": "approved"
+                    "state": "approved"
                     },
                     {
                     "id": "123deef518043137abeefb012305f66",
                     "name": "another organisation",
-                    "join_state": "pending"
+                    "state": "pending"
                     }
                 ]
             }
@@ -2247,11 +2241,11 @@ Logged in
                     "organisations": {
                         "global": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         },
                         "org1": {
                             "role": "user",
-                            "join_state": "pending"
+                            "state": "pending"
                         }
                     },
                     "verified": true
@@ -2422,7 +2416,7 @@ Logged in
                     "id": "org1",
                     "name": "example organisation",
                     "role": "user",
-                     "join_state": "approved"
+                     "state": "approved"
                  }
             }
 
@@ -2497,8 +2491,8 @@ Logged in as Organisation Administrator or System Administrator
 #### Input
 | Property   | Description        | Type   | Mandatory |
 | :--------- | :----------------- | :---   | :-------- |
-| join_state | The new join state | string | no        |
-| role_id    | Id of role         | string | no        |
+| state      | The new join state | string | no        |
+| role       | The new role       | string | no        |
 
 #### Output
 | Property | Description               | Type   |
@@ -2516,7 +2510,7 @@ Logged in as Organisation Administrator or System Administrator
     + Body
 
             {
-                "join_state": "approved"
+                "state": "approved"
             }
 
 + Response 200 (application/json; charset=UTF-8)
@@ -2531,11 +2525,11 @@ Logged in as Organisation Administrator or System Administrator
                     "organisations": {
                         "global": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         },
                         "org1": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         }
                     }
                 }
@@ -2552,7 +2546,7 @@ Logged in as Organisation Administrator or System Administrator
     + Body
 
             {
-                "role_id": "administrator"
+                "role": "administrator"
             }
 
 + Response 200 (application/json; charset=UTF-8)
@@ -2567,11 +2561,11 @@ Logged in as Organisation Administrator or System Administrator
                     "organisations": {
                         "global": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         },
                         "org1": {
                             "role": "administrator",
-                            "join_state": "approved"
+                            "state": "approved"
                         }
                     }
                 }
@@ -2588,8 +2582,8 @@ Logged in as Organisation Administrator or System Administrator
     + Body
 
             {
-                "join_state": "approved",
-                "role_id": "administrator"
+                "state": "approved",
+                "role": "administrator"
             }
 
 + Response 200 (application/json; charset=UTF-8)
@@ -2604,18 +2598,18 @@ Logged in as Organisation Administrator or System Administrator
                     "organisations": {
                         "global": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         },
                         "org1": {
                             "role": "administrator",
-                            "join_state": "approved"
+                            "state": "approved"
                         }
                     }
                 }
             }
 
 
-+ Request update with no join_state or role_id (application/json)
++ Request update with no state or role (application/json)
 
     + Headers
 
@@ -2635,7 +2629,7 @@ Logged in as Organisation Administrator or System Administrator
                 "errors": [
                     {
                         "source": "accounts",
-                        "message": "join_state or role_id is required"
+                        "message": "state or role is required"
                     }
                 ]
             }
@@ -2646,7 +2640,7 @@ Logged in as Organisation Administrator or System Administrator
     + Body
 
             {
-                "join_state": "approved"
+                "state": "approved"
             }
 
 + Response 401 (application/json; charset=UTF-8)
@@ -2674,7 +2668,7 @@ Logged in as Organisation Administrator or System Administrator
     + Body
 
             {
-                "join_state": "approved"
+                "state": "approved"
             }
 
 + Response 403 (application/json; charset=UTF-8)
@@ -2722,7 +2716,7 @@ Logged in as User being updated, Organisation Administrator or System Administra
                     "organisations": {
                         "global": {
                             "role": "user",
-                            "join_state": "approved"
+                            "state": "approved"
                         }
                     }
                 }
