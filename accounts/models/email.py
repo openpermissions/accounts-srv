@@ -28,23 +28,23 @@ import accounts.utils
 
 VERIFICATION_EMAIL_PATH = os.path.join(
     os.path.dirname(__file__),
-    '../../documents/email_templates/verification_template.txt')
+    '../templates/email/verification_template.html')
 
 USER_REQUEST_EMAIL_PATH = os.path.join(
     os.path.dirname(__file__),
-    '../../documents/email_templates/user_request_template.txt')
+    '../templates/email/user_request_template.html')
 
 ADMIN_REQUEST_EMAIL_PATH = os.path.join(
     os.path.dirname(__file__),
-    '../../documents/email_templates/admins_request_template.txt')
+    '../templates/email/admins_request_template.html')
 
 REQUEST_APPROVED_EMAIL_PATH = os.path.join(
     os.path.dirname(__file__),
-    '../../documents/email_templates/approved_request_template.txt')
+    '../templates/email/approved_request_template.html')
 
 REQUEST_REJECTED_EMAIL_PATH = os.path.join(
     os.path.dirname(__file__),
-    '../../documents/email_templates/rejected_request_template.txt')
+    '../templates/email/rejected_request_template.html')
 
 
 @coroutine
