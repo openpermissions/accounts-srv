@@ -1,0 +1,20 @@
+{
+  "registry": [{
+    "_id": "administrator",
+    "last_name": "Administrator",
+    "first_name": "Accounts",
+    "password": "$pbkdf2-sha256$8000$cC4lBKC01vpfKw$qpiMUXnmQdIRI7QHd5dMByXBIaJeH/pPZpqUti0OStY",
+    "type": "user",
+    "email": "admin@example.com",
+    "actor": "Accounts Administrator",
+    "has_agreed_to_terms": true,
+    "organisations": {
+      "global": {
+        "role": "administrator",
+        "state": "approved"
+      }
+    },
+    "verified": true,
+    "state": "approved"
+  }]
+}
