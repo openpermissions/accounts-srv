@@ -45,7 +45,7 @@ and repositories, and add and manage services and manage users for the
 new organisation.
 
 For issues and support, contact
-[support-copyrighthub@digicatapult.org.uk](mailto:support-copyrighthub@digicatapult.org.uk)
+[support@openpermissions.org](mailto:support@openpermissions.org)
 by email.
 
 ### See also
@@ -85,7 +85,7 @@ account management functions that can be accessed programatically.
 
 Staging endpoints should always be used when developing and testing
 new services. Contact
-[support-copyrighthub@digicatapult.org.uk](mailto:support-copyrighthub@digicatapult.org.uk)
+[support@openpermissions.org](mailto:support@openpermissions.org)
 by email for advice on migrating from staging to production endpoints.
 
 ## Accounts Service status in the current release
@@ -387,7 +387,7 @@ From here you can manage:
 [Manage Client Credentials](#manage-client-credentials) below
 + **Access Permissions** &mdash; we recommend you use the default
 **Access Permissions** setting of `All Services Read/Write`. Contact
-[support-copyrighthub@digicatapult.org.uk](mailto:support-copyrighthub@digicatapult.org.uk)
+[support@openpermissions.org](mailto:support@openpermissions.org)
 by email if you have a requirement for stricter permissions
 
 ### Delete a service
@@ -633,7 +633,7 @@ The profile includes:
 + Display text for licence popups
 
 Contact
-[support-copyrighthub@digicatapult.org.uk](mailto:support-copyrighthub@digicatapult.org.uk)
+[support@openpermissions.org](mailto:support@openpermissions.org)
 by email to discuss web integration and licence requirements.
 
 ### Assign user Role
