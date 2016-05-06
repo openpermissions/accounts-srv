@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: https://acc-stage.copyrighthub.org
 
 # Open Permissions Platform Accounts Service
-Provides party accounts, and against a party account can be registered organisations, services and repositories.
+The accounts service provides party accounts. Against a party account can be registered organisations, services and repositories.
 
 ## Standard error output
 On endpoint failure there is a standard way to report errors.
@@ -60,7 +60,7 @@ The API supports cross-origin requests from any origin using CORS.
 | verified            | Verification status                   | string  |
 | has_agreed_to_terms | User has agreed to Terms & Conditions | boolean |
 
-## The organisation object
+## The Organisation object
 | Property            | Description                                         | Type   |
 | :-------            | :----------                                         | :---   |
 | id                  | Organisation ID                                     | string |
@@ -117,7 +117,7 @@ The API supports cross-origin requests from any origin using CORS.
 | permissions       | Permission object                      | object |
 
 
-## Permission Object
+## The Permissions object
 
 Access to services and repositories is controlled by an access control list (ACL).
 Each rule in the ACL is an array with 2 items; an object that contains
