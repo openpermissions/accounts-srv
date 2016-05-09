@@ -13,7 +13,7 @@
         "role": "user",
         "state": "approved"
       },
-      "hogwarts": {
+      "toppco": {
         "role": "administrator",
         "state": "approved"
       }
@@ -23,7 +23,7 @@
   }, {
     "_id": "cuthbert",
     "last_name": "Cuthbert",
-    "first_name": "Binns",
+    "first_name": "Brinns",
     "password": "$pbkdf2-sha256$8000$cC4lBKC01vpfKw$qpiMUXnmQdIRI7QHd5dMByXBIaJeH/pPZpqUti0OStY",
     "type": "user",
     "email": "cuthbert@example.com",
@@ -34,7 +34,7 @@
         "role": "user",
         "state": "approved"
       },
-      "hogwarts": {
+      "toppco": {
         "role": "user",
         "state": "approved"
       }
@@ -89,7 +89,7 @@
     "first_name": "Test",
     "password": "$pbkdf2-sha256$8000$cC4lBKC01vpfKw$qpiMUXnmQdIRI7QHd5dMByXBIaJeH/pPZpqUti0OStY",
     "type": "user",
-    "email": "copyright.hub@example.com",
+    "email": "opp@example.com",
     "actor": "Accounts Administrator",
     "has_agreed_to_terms": true,
     "organisations": {

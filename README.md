@@ -1,7 +1,7 @@
 Open Permissions Platform Accounts
 ==================================
 
-This repository contains an Open Permissions Platform Accounts application which take care
+This repository contains an Open Permissions Platform Accounts application which takes care
 of user account management.
 
 Running locally
@@ -34,13 +34,13 @@ To have a "clean" target from build artifacts:
 make clean
 ```
 
-To install requirements. By default prod requirement is used:
+To install requirements. By default, prod requirement is used:
 
 ```
 make requirements [REQUIREMENT=test|dev|prod]
 ```
 
-To run all unit tests and generate a HTML code coverage report along with a
+To run all unit tests and generate an HTML code coverage report along with a
 JUnit XML report in tests/unit/reports:
 
 ```
