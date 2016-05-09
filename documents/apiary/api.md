@@ -1946,6 +1946,113 @@ Logged in as System Administrator
                 ]
             }
 
++ Request update the reference links for an organisation (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Authorization: [TOKEN]
+
+    + Body
+
+            {
+                "reference_links": {
+                    "links": {
+                        "link1": "https://url1.com",
+                        "link2": "https://url2.com"
+                    }
+                }
+            }
+
++ Response 200 (application/json; charset=UTF-8)
+
+    + Body
+
+            {
+                "status": 200,
+                "data": {
+                    "name": "organisation_name",
+                    "reference_links": {
+                        "links": {
+                            "link1": "https://url1.com",
+                            "link2": "https://url2.com"
+                        }
+                    },
+                    "state": "approved",
+                    "id": "2fd87e9a1b63f9f8f2458dbe9f001f40"
+                }
+            }
+
++ Request update the redirect id type for an organisation (application/json)
+
+    + Headers
+
+            Accept: application/json
+            Authorization: [TOKEN]
+
+    + Body
+
+            {
+                "reference_links": {
+                    "links": {
+                        "link1": "https://url1.com",
+                        "link2": "https://url2.com"
+                    },
+                    "redirect_id_type" : "link1"
+                }
+            }
+
++ Response 200 (application/json; charset=UTF-8)
+
+    + Body
+
+            {
+                "status": 200,
+                "data": {
+                    "name": "organisation_name",
+                    "reference_links": {
+                        "links": {
+                            "link1": "https://url1.com",
+                            "link2": "https://url2.com"
+                        },
+                        "redirect_id_type": "link1"
+                    },
+                    "state": "approved",
+                    "id": "2fd87e9a1b63f9f8f2458dbe9f001f40"
+                }
+            }
+
++ Request update the redirect id type with an invalid value (application/json)
+
+   + Headers
+
+            Accept: application/json
+            Authorization: [TOKEN]
+
+   + Body
+
+            {
+                "reference_links": {
+                    "links": {},
+                    "redirect_id_type" : "id1"
+                }
+            }
+
++ Response 200 (application/json; charset=UTF-8)
+
+    + Body
+
+            {
+                "status": 400,
+                "errors": [
+                    {
+                        "field": "reference_links",
+                        "source": "acocunts",
+                        "message": "Redirect ID type must point to one of the links' ID types"
+                    }
+                ]
+            }
+
 ### Delete organisation [DELETE]
 
 #### Authorization
