@@ -254,7 +254,7 @@ Additionally from the tabs on the organisation home page you can:
 + **Account** &mdash; manage your user profile, including password change
 + **Requests** &mdash; view your pending requests, and manage requests if
   you are an organisation admin
-  
+
 ### Manage requests
 
 Users can track the progress of requests they have made to create new
@@ -672,4 +672,3 @@ Select the Role you wish to assign to the user and click Save to
 update the user's profile:
 
 ![admin-edit-user-role-click](images/admin-edit-user-role-click.png)
-
