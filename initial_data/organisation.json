@@ -1,0 +1,16 @@
+{
+  "registry": [{
+    "_id": "digitalcatapult",
+    "type": "organisation",
+    "name": "Digital Catapult",
+    "description": "The Digital Catapult is a national centre to rapidly accelerate the UK's best digital ideas to market to create new products, services, jobs and value for the UK economy.",
+    "address": "101 Euston Road, Kings Cross, London NW1 2RA",
+    "phone": "0300 123 3101",
+    "email": "info@cde.catapult.org.uk",
+    "state": "approved",
+    "star_rating": 0,
+    "created_by": "admin",
+    "services": [],
+    "repoistories": []
+  }]
+}
