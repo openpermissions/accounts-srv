@@ -139,7 +139,8 @@ class OrganisationReferenceLinks(BaseHandler):
         source_id_type = data['source_id_type']
 
         organisation = yield perch.Organisation.get(organisation_id)
-        links = getattr(organisation, 'reference_links', {})
+        reference_links = getattr(organisation, 'reference_links', {})
+        links = reference_links.get('links', {})
 
         link = links.get(source_id_type)
 
