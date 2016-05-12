@@ -14,7 +14,6 @@
         "state": "approved"
       }
     },
-    "verified": true,
     "state": "approved",
     "role": "user"
   }, {
@@ -32,7 +31,6 @@
         "state": "approved"
       }
     },
-    "verified": true,
     "state": "approved",
     "role": "user"
   }, {
@@ -50,7 +48,6 @@
         "state": "approved"
       }
     },
-    "verified": true,
     "state": "approved",
     "role": "user"
   }, {
@@ -68,7 +65,6 @@
         "state": "approved"
       }
     },
-    "verified": true,
     "state": "approved",
     "role": "user"
   }, {
@@ -81,7 +77,6 @@
     "actor": "Accounts Administrator",
     "has_agreed_to_terms": true,
     "organisations": {},
-    "verified": true,
     "state": "approved",
     "role": "administrator"
   }, {
@@ -94,7 +89,6 @@
     "actor": "Accounts Administrator",
     "has_agreed_to_terms": true,
     "organisations": {},
-    "verified": true,
     "state": "approved",
     "role": "administrator"
   }]

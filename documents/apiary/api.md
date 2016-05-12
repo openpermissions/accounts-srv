@@ -515,7 +515,7 @@ Logged in
                     "last_name": "Bull",
                     "phone": "+44 207 123 4567",
                     "email": "john.bull@mycompany.com",
-                    "agreed_to_terms": true
+                    "agreed_to_terms": true,
                     "verified": false
                 }
             }
