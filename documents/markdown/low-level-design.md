@@ -21,8 +21,8 @@
 + organisation
 + role
 + service
-+ certificates
 + repository
++ client secret 
 
 ## Class Relationship
 ![](./images/entity-relationship.png)
@@ -46,13 +46,13 @@ facilities.
 A **service** represents any service used to implement the Hub along with any
 client service. All services must belong to an **organisation**.
 
-### Certificate
-Access to a **service** is via a **certificate** the certificate presented must
-be recognised by the Hub.
-
 ### Repository
 A **repository** is used by an **organisation** to store its assets and
 offers.
+
+### Client Secret
+A **service** can have multiple **client secrets** which are used for OAuth2 authentication 
+between services.
 
 ## Access control hierarchy
 The precedence rules for access control have been based on NTFS file access
