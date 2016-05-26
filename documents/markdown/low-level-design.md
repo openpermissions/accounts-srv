@@ -19,22 +19,16 @@
 ## Classes
 + user
 + organisation
-+ role
 + service
-+ certificates
 + repository
++ OAuthSecret 
 
 ## Class Relationship
 ![](./images/entity-relationship.png)
 
 ### User
 The **user** class represents, as expected, a user of the system.
-
-### Organisation
-An **organisation** within the Hub supplies and stores information on assets
-and the offers available for them.
-
-### Role
+#### Role
 When a **user** is added to an **organisation** they will be assigned a
 **role**. If they are given an *administrator* role they will be able to
 maintain information and users belonging to the **organisation** otherwise they
@@ -42,17 +36,22 @@ will only be able to read information.
 Users given the role of *System Administrator* will have access to all
 facilities.
 
+### Organisation
+An **organisation** within the Hub supplies and stores information on assets
+and the offers available for them.
+
+
 ### Service
 A **service** represents any service used to implement the Hub along with any
 client service. All services must belong to an **organisation**.
 
-### Certificate
-Access to a **service** is via a **certificate** the certificate presented must
-be recognised by the Hub.
-
 ### Repository
 A **repository** is used by an **organisation** to store its assets and
 offers.
+
+### OAuthSecret
+A **service** can have multiple **OAuthSecrets** which are used for OAuth2 authentication 
+between services.
 
 ## Access control hierarchy
 The precedence rules for access control have been based on NTFS file access
