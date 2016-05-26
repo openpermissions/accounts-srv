@@ -19,28 +19,27 @@
 ## Classes
 + user
 + organisation
-+ role
 + service
 + repository
-+ client secret 
++ OAuthSecret 
 
 ## Class Relationship
 ![](./images/entity-relationship.png)
 
 ### User
 The **user** class represents, as expected, a user of the system.
-
-### Organisation
-An **organisation** within the Hub supplies and stores information on assets
-and the offers available for them.
-
-### Role
+#### Role
 When a **user** is added to an **organisation** they will be assigned a
 **role**. If they are given an *administrator* role they will be able to
 maintain information and users belonging to the **organisation** otherwise they
 will only be able to read information.
 Users given the role of *System Administrator* will have access to all
 facilities.
+
+### Organisation
+An **organisation** within the Hub supplies and stores information on assets
+and the offers available for them.
+
 
 ### Service
 A **service** represents any service used to implement the Hub along with any
@@ -50,8 +49,8 @@ client service. All services must belong to an **organisation**.
 A **repository** is used by an **organisation** to store its assets and
 offers.
 
-### Client Secret
-A **service** can have multiple **client secrets** which are used for OAuth2 authentication 
+### OAuthSecret
+A **service** can have multiple **OAuthSecrets** which are used for OAuth2 authentication 
 between services.
 
 ## Access control hierarchy
