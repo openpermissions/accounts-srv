@@ -17,10 +17,39 @@
 # 
 
 "base handler for accounts"
+import logging
+from functools import wraps
+
 import couch
+from tornado.options import options, define
 from tornado.gen import coroutine, Return
 from koi import base
 from perch import exceptions, Token, User
+
+define("max_retries", default=3)
+
+
+def retry(exception_type):
+    """Retry calling the decorated function when exception type is raised
+    :param exception_type: the exception type to retry for.
+    """
+    def deco_retry(f):
+        @coroutine
+        @wraps(f)
+        def wrapper(*args, **kwargs):
+            remaining_tries = options.max_retries
+            while remaining_tries > 0:
+                try:
+                    yield f(*args, **kwargs)
+                    raise Return(True)
+                except exception_type as e:
+                    remaining_tries -= 1
+                    msg = "%s Retry attempt number %s of %s" % \
+                          (str(e), options.max_retries-remaining_tries, options.max_retries)
+                    logging.warn(msg)
+            yield f(*args, **kwargs)
+        return wrapper
+    return deco_retry
 
 
 class BaseHandler(base.CorsHandler, base.JsonHandler):
@@ -29,6 +58,9 @@ class BaseHandler(base.CorsHandler, base.JsonHandler):
         if isinstance(exc, couch.NotFound):
             self.set_status(404)
             self.write_error(404, reason=exc.args[1])
+        elif isinstance(exc, couch.Conflict):
+            self.set_status(409)
+            self.write_error(409, reason=exc.args[1])
         elif isinstance(exc, exceptions.ValidationError):
             self.set_status(400)
             self.write_error(400, reason=exc.args[0])

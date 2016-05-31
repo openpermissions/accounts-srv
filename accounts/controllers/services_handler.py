@@ -17,6 +17,7 @@
 #
 
 """API Services handler. Allows to create and modify CH Service accounts"""
+import couch
 from koi import auth
 from koi.exceptions import HTTPError
 import perch
@@ -25,7 +26,7 @@ from perch.organisation import SERVICE_TYPES
 from tornado.gen import coroutine
 
 from accounts.models import email
-from .base import BaseHandler
+from .base import BaseHandler, retry
 from accounts.audit import audit_log
 
 
@@ -115,6 +116,7 @@ class ServicesHandler(BaseHandler):
 class OrgServicesHandler(BaseHandler):
     """Responsible for an organisation's services"""
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def post(self, organisation_id):
