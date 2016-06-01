@@ -30,10 +30,22 @@ define("max_retries", default=3)
 
 
 def retry(exception_type):
-    """Retry calling the decorated function when exception type is raised
+    """
+    Decorate a coroutine method to retry (up to max_retries) if the given exception type is raised
+
+    Coroutine decorator must be applied first.
+    eg.::
+
+        class Handler(tornado.web.RequestHandler):
+
+            @retry(couch.Conflict)
+            @coroutine
+            def get(self):
+                pass
+
     :param exception_type: the exception type to retry for.
     """
-    def deco_retry(f):
+    def _retry_decorator(f):
         @coroutine
         @wraps(f)
         def wrapper(*args, **kwargs):
@@ -49,7 +61,7 @@ def retry(exception_type):
                     logging.warn(msg)
             yield f(*args, **kwargs)
         return wrapper
-    return deco_retry
+    return _retry_decorator
 
 
 class BaseHandler(base.CorsHandler, base.JsonHandler):

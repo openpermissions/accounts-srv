@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
+import couch
 from tornado.gen import coroutine
 
 from koi import auth
@@ -24,7 +24,7 @@ from perch.model import State
 
 from ..models import email
 from ..audit import audit_log
-from .base import BaseHandler
+from .base import BaseHandler, retry
 
 
 class OrganisationRepositories(BaseHandler):
@@ -43,6 +43,7 @@ class OrganisationRepositories(BaseHandler):
 
         self.finish({'status': 200, 'data': repositories})
 
+    @retry(couch.Conflict)
     @auth.authorized(perch.Token.valid)
     @coroutine
     def post(self, organisation_id):
@@ -87,6 +88,7 @@ class Respository(BaseHandler):
         result = yield repo.with_relations(user=self.user)
         self.finish({'status': 200, 'data': result})
 
+    @retry(couch.Conflict)
     @auth.authorized(perch.Token.valid)
     @coroutine
     def delete(self, repository_id):
@@ -103,6 +105,7 @@ class Respository(BaseHandler):
             }
         })
 
+    @retry(couch.Conflict)
     @auth.authorized(perch.Token.valid)
     @coroutine
     def put(self, repository_id):

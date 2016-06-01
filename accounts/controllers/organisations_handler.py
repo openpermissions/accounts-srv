@@ -29,7 +29,7 @@ from tornado import gen
 from accounts.models import email
 
 from accounts.audit import audit_log
-from .base import BaseHandler
+from .base import BaseHandler, retry
 
 
 class Organisation(BaseHandler):
@@ -46,6 +46,7 @@ class Organisation(BaseHandler):
             'data': result.clean()
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @gen.coroutine
     def put(self, organisation_id):
@@ -71,6 +72,7 @@ class Organisation(BaseHandler):
 
         self.finish({'status': 200, 'data': organisation.clean()})
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @gen.coroutine
     def delete(self, organisation_id):

@@ -49,6 +49,7 @@ class Service(BaseHandler):
             'data': result.clean(user=self.user)
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def put(self, service_id):
@@ -76,6 +77,7 @@ class Service(BaseHandler):
             'data': service.clean(user=self.user)
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def delete(self, service_id):
