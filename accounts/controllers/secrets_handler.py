@@ -17,6 +17,7 @@
 # 
 
 """API Secrets handler. Allows to get, create and delete Service client secret credentials"""
+import couch
 import perch
 from perch.model import State
 from koi import auth
@@ -24,7 +25,7 @@ from koi.exceptions import HTTPError
 from tornado.gen import coroutine
 
 from accounts.audit import audit_log
-from .base import BaseHandler
+from .base import BaseHandler, retry
 
 
 class SecretsHandler(BaseHandler):
@@ -60,6 +61,7 @@ class SecretsHandler(BaseHandler):
             'data': secret.id
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def delete(self, service_id):
@@ -77,6 +79,7 @@ class SecretsHandler(BaseHandler):
 
 
 class Secret(BaseHandler):
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def delete(self, service_id, secret):

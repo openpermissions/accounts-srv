@@ -20,7 +20,7 @@
 """
 import couch
 from koi import auth
-from .base import BaseHandler
+from .base import BaseHandler, retry
 from koi.base import HTTPError
 from tornado.gen import coroutine
 
@@ -104,6 +104,7 @@ class UserOrgsHandler(BaseHandler):
             'data': result
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def post(self, user_id):
@@ -156,6 +157,7 @@ class UserOrgHandler(BaseHandler):
             }
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def put(self, user_id, organisation_id):
@@ -180,6 +182,7 @@ class UserOrgHandler(BaseHandler):
 
         self.finish({'status': 200, 'data': user_org.parent.clean()})
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def delete(self, user_id, organisation_id):
@@ -215,6 +218,7 @@ class UserRolesHandler(BaseHandler):
             'data': result
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def post(self, user_id):
@@ -254,6 +258,7 @@ class User(BaseHandler):
             'data': user.clean()
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def put(self, user_id):
@@ -273,6 +278,7 @@ class User(BaseHandler):
             'data': user.clean()
         })
 
+    @retry(couch.Conflict)
     @auth.auth_required(perch.Token.valid)
     @coroutine
     def delete(self, user_id):
@@ -289,7 +295,6 @@ class User(BaseHandler):
 
 
 class UserVerify(BaseHandler):
-
     @coroutine
     def put(self, user_id):
         """Verify a user based on verification hash"""
