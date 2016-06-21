@@ -515,7 +515,7 @@ Logged in
                     "last_name": "Bull",
                     "phone": "+44 207 123 4567",
                     "email": "john.bull@mycompany.com",
-                    "agreed_to_terms": true
+                    "agreed_to_terms": true,
                     "verified": false
                 }
             }
@@ -1131,244 +1131,6 @@ Logged in
             }
 
 + Request Attempt to update password without sufficient authorization (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-+ Response 403 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 403,
-                "errors": [
-                    {
-                        "source": "accounts",
-                        "message": "Token is not authorised for this action: d419d20c-e14f-4b52-98d6-0e8717a68f28"
-                    }
-                ]
-            }
-
-## User Roles resource [/v1/accounts/users/{user_id}/roles]
-
-+ Parameters
-    + user_id (required, string, `user1`)  ... ID of the user
-
-### Get all organisation-roles [GET]
-
-#### Authorization
-Logged in
-
-#### Output
-| Property | Description                        | Type   |
-| :------- | :----------                        | :---   |
-| status   | The status of the request          | number |
-| data     | Array of organisation-role objects | array  |
-
-#### Organisation-role object
-| Property        | Description        | Type   |
-| :-------        | :----------        | :---   |
-| organisation_id | Organisation ID    | string |
-| role            | Role Object        | object |
-| state      | Join state of join | string |
-
-+ Request all organisation-roles (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-+ Response 200 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 200,
-                "data": [
-                    {
-                    "organisation_id": "global",
-                    "role": {
-                            "name": "User",
-                            "id": "user"
-                            },
-                    "state": "approved"
-                    },
-                    {
-                    "organisation_id": "org1",
-                    "role": {
-                            "name": "Admin",
-                            "id": "admin"
-                            },
-                    "state": "approved"
-                    }
-                ]
-            }
-
-
-+ Request all organisation-roles with invalid user id (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-+ Response 400 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 400,
-                "errors": [
-                    {
-                        "source": "accounts",
-                        "message": "Invalid 'user_id'"
-                    }
-                ]
-            }
-
-+ Request Attempt to get organisation-roles when not authenticated
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 401 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 401,
-                "errors": [
-                    {
-                        "source": "accounts",
-                        "message": "Token not in Authorization header"
-                    }
-                ]
-            }
-
-+ Request Attempt to get organisation-roles without sufficient authorization (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-+ Response 403 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 403,
-                "errors": [
-                    {
-                        "source": "accounts",
-                        "message": "Token is not authorised for this action: d419d20c-e14f-4b52-98d6-0e8717a68f28"
-                    }
-                ]
-            }
-
-### Set global role for user [POST]
-
-#### Authorization
-Logged in as System Administrator
-
-#### Input
-| Property  | Description   | Type   | Mandatory |
-| :-------  | :----------   | :---   | :-------- |
-| role      | New Role      | string | yes       |
-
-#### Output
-| Property | Description                    | Type   |
-| :------- | :----------                    | :---   |
-| status   | The status of the request      | number |
-| data     | User object with updated roles | object |
-
-+ Request update global role (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-    + Body
-
-            {
-                "role": "admin"
-            }
-
-+ Response 200 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 200,
-                "data": {
-                    "id": "user1",
-                    "first_name": "John",
-                    "last_name": "Bull",
-                    "email": "new_email@mycompany.com",
-                    "verified": True,
-                    "organisations": {
-                        "global": {
-                            "state": "approved",
-                            "role": "admin"
-                        }
-                    }
-                }
-            }
-
-
-+ Request update invalid global role (application/json)
-
-    + Headers
-
-            Accept: application/json
-            Authorization: [TOKEN]
-
-    + Body
-
-            {
-                "role": "invalid_role"
-            }
-
-+ Response 400 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 400,
-                "errors": [
-                    {
-                        "source": "accounts:,
-                        "message": "Invalid Role id"
-                    }
-                ]
-            }
-
-+ Request Attempt to update global role when not authenticated
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 401 (application/json; charset=UTF-8)
-
-    + Body
-
-            {
-                "status": 401,
-                "errors": [
-                    {
-                        "source": "accounts",
-                        "message": "Token not in Authorization header"
-                    }
-                ]
-            }
-
-+ Request Attempt to update global role without sufficient authorization (application/json)
 
     + Headers
 
@@ -2345,11 +2107,8 @@ Logged in
                 "data": {
                     "id": "user1",
                     "email": "user@example.com",
+                    "role": "user",
                     "organisations": {
-                        "global": {
-                            "role": "user",
-                            "state": "approved"
-                        },
                         "org1": {
                             "role": "user",
                             "state": "pending"
@@ -2629,11 +2388,8 @@ Logged in as Organisation Administrator or System Administrator
                 "data": {
                     "id": "user1",
                     "email": "user@example.com",
+                    "role": "user",
                     "organisations": {
-                        "global": {
-                            "role": "user",
-                            "state": "approved"
-                        },
                         "org1": {
                             "role": "user",
                             "state": "approved"
@@ -2665,11 +2421,8 @@ Logged in as Organisation Administrator or System Administrator
                 "data": {
                     "id": "user1",
                     "email": "user@example.com",
+                    "role": "user",
                     "organisations": {
-                        "global": {
-                            "role": "user",
-                            "state": "approved"
-                        },
                         "org1": {
                             "role": "administrator",
                             "state": "approved"
@@ -2702,11 +2455,8 @@ Logged in as Organisation Administrator or System Administrator
                 "data": {
                     "id": "user1",
                     "email": "user@example.com",
+                    "role": "user",
                     "organisations": {
-                        "global": {
-                            "role": "user",
-                            "state": "approved"
-                        },
                         "org1": {
                             "role": "administrator",
                             "state": "approved"
@@ -2820,12 +2570,8 @@ Logged in as User being updated, Organisation Administrator or System Administra
                     "id": "user1",
                     "email": "jonh.bull@mycompany.com",
                     "verified": true,
-                    "organisations": {
-                        "global": {
-                            "role": "user",
-                            "state": "approved"
-                        }
-                    }
+                    "role": "user",
+                    "organisations": {}
                 }
             }
 

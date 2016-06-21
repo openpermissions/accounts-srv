@@ -200,50 +200,6 @@ class UserOrgHandler(BaseHandler):
         })
 
 
-class UserRolesHandler(BaseHandler):
-    """ Manages User-Organisation roles """
-
-    @auth.auth_required(perch.Token.valid)
-    @coroutine
-    def get(self, user_id):
-        """ Gets all organisation-roles associated with a user """
-        user = yield perch.User.get(user_id)
-        result = [{
-            'organisation_id': org_id,
-            'role': x['role']
-        } for org_id, x in getattr(user, 'organisations', {}).items()]
-
-        self.finish({
-            'status': 200,
-            'data': result
-        })
-
-    @retry(couch.Conflict)
-    @auth.auth_required(perch.Token.valid)
-    @coroutine
-    def post(self, user_id):
-        """ Sets Global role associated with a user"""
-        if not self.user.is_admin():
-            raise HTTPError(403, 'Forbidden')
-
-        data = self.get_json_body(required=['role'])
-        role = data['role']
-
-        user = yield perch.User.get(user_id)
-        global_role = user.organisations.get('global', {'state': 'approved'})
-        global_role['role'] = role
-        user.organisations['global'] = global_role
-        # TODO: change model so don't need to call _save
-        yield user._save()
-
-        audit_log.info(self, "updated user role, user id: {}".format(user_id))
-
-        self.finish({
-            'status': 200,
-            'data': user.clean()
-        })
-
-
 class User(BaseHandler):
     """User resource"""
 

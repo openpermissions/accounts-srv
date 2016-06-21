@@ -9,17 +9,13 @@
     "actor": "Organisation Administrator",
     "has_agreed_to_terms": true,
     "organisations": {
-      "global": {
-        "role": "user",
-        "state": "approved"
-      },
       "toppco": {
         "role": "administrator",
         "state": "approved"
       }
     },
-    "verified": true,
-    "state": "approved"
+    "state": "approved",
+    "role": "user"
   }, {
     "_id": "cuthbert",
     "last_name": "Cuthbert",
@@ -30,17 +26,13 @@
     "actor": "Organisation User",
     "has_agreed_to_terms": true,
     "organisations": {
-      "global": {
-        "role": "user",
-        "state": "approved"
-      },
       "toppco": {
         "role": "user",
         "state": "approved"
       }
     },
-    "verified": true,
-    "state": "approved"
+    "state": "approved",
+    "role": "user"
   }, {
     "_id": "cathy",
     "last_name": "Catherine",
@@ -51,17 +43,13 @@
     "actor": "Organisation Administrator",
     "has_agreed_to_terms": true,
     "organisations": {
-      "global": {
-        "role": "user",
-        "state": "approved"
-      },
       "testco": {
         "role": "administrator",
         "state": "approved"
       }
     },
-    "verified": true,
-    "state": "approved"
+    "state": "approved",
+    "role": "user"
   }, {
     "_id": "katie",
     "last_name": "Katie",
@@ -72,17 +60,13 @@
     "actor": "Organisation User",
     "has_agreed_to_terms": true,
     "organisations": {
-      "global": {
-        "role": "user",
-        "state": "approved"
-      },
       "testco": {
         "role": "user",
         "state": "approved"
       }
     },
-    "verified": true,
-    "state": "approved"
+    "state": "approved",
+    "role": "user"
   }, {
     "_id": "testadmin",
     "last_name": "Admin",
@@ -92,14 +76,9 @@
     "email": "opp@example.com",
     "actor": "Accounts Administrator",
     "has_agreed_to_terms": true,
-    "organisations": {
-      "global": {
-        "role": "administrator",
-        "state": "approved"
-      }
-    },
-    "verified": true,
-    "state": "approved"
+    "organisations": {},
+    "state": "approved",
+    "role": "administrator"
   }, {
     "_id": "developer",
     "last_name": "Developer",
@@ -109,13 +88,8 @@
     "email": "developer.hub@example.com",
     "actor": "Accounts Administrator",
     "has_agreed_to_terms": true,
-    "organisations": {
-      "global": {
-        "role": "administrator",
-        "state": "approved"
-      }
-    },
-    "verified": true,
-    "state": "approved"
+    "organisations": {},
+    "state": "approved",
+    "role": "administrator"
   }]
 }

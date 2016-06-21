@@ -51,7 +51,6 @@ APPLICATION_URLS = [
     (r"/login", login_handler.LoginHandler),
     (r"/users",  users_handler.UsersHandler),
     (r"/users/{user_id}", users_handler.User),
-    (r"/users/{user_id}/roles", users_handler.UserRolesHandler),
     (r"/users/{user_id}/verify", users_handler.UserVerify),
     (r"/users/{user_id}/password", users_handler.UserPassword),
     (r"/users/{user_id}/organisations", users_handler.UserOrgsHandler),
