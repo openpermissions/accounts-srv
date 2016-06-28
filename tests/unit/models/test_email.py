@@ -61,9 +61,11 @@ def teardown_module():
     patch.stopall()
 
 
+@patch('accounts.models.email.options')
 @patch('accounts.utils.send_email', return_value=make_future(True))
 @gen_test
-def test_send_verification_email(send_email):
+def test_send_verification_email(send_email, options):
+    options.url_services_ui = 'https://example.com'
     subject = 'Please verify your email address'
 
     yield email.send_verification_email(USER)
@@ -71,11 +73,15 @@ def test_send_verification_email(send_email):
     assert (send_email.call_count==1)
     assert (send_email.call_args_list[0][0][0]=='test@example.com')
     assert (send_email.call_args_list[0][0][1]== subject)
+    assert (send_email.call_args_list[0][0][1]== subject)
 
 
+@patch('accounts.models.email.options')
 @patch('accounts.utils.send_email', return_value=make_future(True))
 @gen_test
-def test_send_verification_email_without_optional_user_params(send_email):
+def test_send_verification_email_without_optional_user_params(send_email, options):
+    options.url_services_ui = 'https://example.com'
+
     user = User(
         verification_hash=USER.verification_hash,
         email=USER.email,
@@ -86,7 +92,6 @@ def test_send_verification_email_without_optional_user_params(send_email):
     subject = 'Please verify your email address'
 
     yield email.send_verification_email(user)
-
 
     assert (send_email.call_count==1)
     assert (send_email.call_args_list[0][0][0]=='test@example.com')
