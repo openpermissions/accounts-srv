@@ -23,6 +23,7 @@ import os.path
 from perch import views, Organisation
 from perch.model import State
 from tornado.gen import coroutine, Return
+from tornado.options import options
 
 import accounts.utils
 
@@ -59,7 +60,8 @@ def send_verification_email(user):
             email=user.email,
             name=getattr(user, 'first_name', None),
             user_id=user.id,
-            verification_hash=getattr(user, 'verification_hash', None)
+            verification_hash=getattr(user, 'verification_hash', None),
+            url_services_ui=options.url_services_ui
         )
 
     yield accounts.utils.send_email(
