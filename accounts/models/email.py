@@ -100,7 +100,7 @@ def send_create_request_emails(user, entity):
     :param entity: the organisation/service that is the subject of the request
     """
     if entity.resource_type == Organisation.resource_type:
-        organisation_id = entity.id
+        organisation_id = None
     else:
         organisation_id = entity.organisation_id
     admins = yield views.admin_emails.values(key=organisation_id)
