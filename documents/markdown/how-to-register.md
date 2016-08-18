@@ -83,10 +83,15 @@ account management functions that can be accessed programatically.
 
 ### Production and staging
 
-Staging endpoints should always be used when developing and testing
-new services. Contact
-[support@openpermissions.org](mailto:support@openpermissions.org)
-by email for advice on migrating from staging to production endpoints.
+Staging endpoints should always be used when developing and testing new services, before deploying to the production environment.
+
+Please note you will need to create the appropriate accounts and services on both staging and on production, as there is no replication of data.
+You will find the Staging Service Manager [here](http://services-stage.copyrighthub.org/) and the Production Service Manager [here](http://services.copyrighthub.org).
+
+When ready to migrate from staging to production endpoints, simply remove '-stage' from the endpoint name.
+
+#### Example
+https://acc-stage.copyrighthub.org/v1/accounts --> https://acc.copyrighthub.org/v1/accounts
 
 ## Accounts Service status in the current release
 
@@ -94,12 +99,8 @@ The **Accounts Service** web UI is live and stable in the current release.
 
 ### Limitations
 
-+ There may be some delay in replicating account data to the staging
-  service
 + Offer generation is not automated and requires some understanding of
   the underlying policy expression language
-+ Currently offers are identified in the UI by their UUID not their
-  descriptive name
 
 ## New organisation and service registration
 
@@ -145,7 +146,7 @@ When you sign up you create a new user account. Once activated, the
 account can be joined to an existing or new organisation.
 
 To sign up, in your browser navigate to
-http://services.copyrighthub.org/. The **Services Manager** welcome page
+http://services-stage.copyrighthub.org/. The **Services Manager** welcome page
 is displayed.
 
 Click **Signup**:
@@ -167,7 +168,7 @@ To use Hub services, an organisation must first register with the Hub,
 and then register its services that will use the Hub.
 
 To register an organisation, navigate to
-http://services.copyrighthub.org/ and login with your account details.
+http://services-stage.copyrighthub.org/ and login with your account details.
 
 On the **Services Manager** welcome page click the **Create a new
 organisation** button:
@@ -198,7 +199,7 @@ approved.
 
 ### Join an organisation
 
-Navigate to http://services.copyrighthub.org/ and login with your
+Navigate to http://services-stage.copyrighthub.org/ and login with your
 account details.
 
 You will be asked to select, create, or join an organisation.
@@ -223,7 +224,7 @@ approved.
 
 ### Manage an organisation
 
-Navigate to http://services.copyrighthub.org/ and login with your
+Navigate to http://services-stage.copyrighthub.org/ and login with your
 account details.
 
 Open the drop down list and select the organisation to manage:
@@ -278,7 +279,7 @@ made by new or non-admin users.
 
 All users can update their basic account information.
 
-Navigate to http://services.copyrighthub.org/ and login with your account
+Navigate to http://services-stage.copyrighthub.org/ and login with your account
 details. Select the **Account** tab:
 
 ![account](images/account.png)
