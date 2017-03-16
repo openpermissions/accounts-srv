@@ -61,7 +61,11 @@ class UsersHandler(BaseHandler):
             raise HTTPError(400, exc.args[0])
 
         audit_log.info(self, "user created, user_id: {}".format(user.id))
-        yield email.send_verification_email(user)
+
+        # only send verification email if hash exists  
+        if (getattr(user, 'verification_hash', None)) is not None: 
+            audit_log.info(self, "send verification email to user_id: {}".format(user.id))
+            yield email.send_verification_email(user)
 
         self.finish({
             'status': 200,
