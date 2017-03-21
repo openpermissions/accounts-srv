@@ -35,6 +35,7 @@ from accounts.audit import audit_log
 class UsersHandler(BaseHandler):
     """ Responsible for managing user resources """
 
+    @auth.auth_optional(perch.Token.valid)
     @coroutine
     def post(self):
         """Create user"""
