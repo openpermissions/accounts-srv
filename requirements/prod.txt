@@ -14,8 +14,8 @@ idna==2.1
 ipaddress==1.0.17
 oauth==1.0.1
 opp-chub==1.0.6
-opp-koi==1.0.10
-opp-perch==0.15.14
+opp-koi==1.1.0
+opp-perch==0.16.1
 passlib==1.6.2
 pyasn1==0.1.9
 pycparser==2.17
