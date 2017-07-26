@@ -137,7 +137,9 @@ class UserOrgsHandler(BaseHandler):
         msg = ("created user-organisation link, user id: {}, "
                "organisation id: {}".format(user_id, organisation_id))
         audit_log.info(self, msg)
-        yield email.send_join_request_emails(user, organisation)
+
+        if not (self.user.is_reseller() and data.get('pre_verified', False)):
+            yield email.send_join_request_emails(user, organisation)
 
         self.finish({
             'status': 200,

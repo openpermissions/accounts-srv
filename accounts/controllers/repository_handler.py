@@ -59,7 +59,7 @@ class OrganisationRepositories(BaseHandler):
                .format(organisation_id, repository.id, data))
         audit_log.info(self, msg)
 
-        if repository.state == State.pending:
+        if repository.state == State.pending and not (self.user.is_reseller() and data.get('pre_verified', False)):
             yield email.send_repository_request_emails(self.user, repository)
 
         result = yield repository.with_relations(user=self.user)
