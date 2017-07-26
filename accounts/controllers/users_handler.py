@@ -31,7 +31,6 @@ from accounts.models import email
 
 from accounts.audit import audit_log
 
-
 class UsersHandler(BaseHandler):
     """ Responsible for managing user resources """
 
@@ -116,6 +115,8 @@ class UserOrgsHandler(BaseHandler):
         """ Create User-Organisation relationship """
         data = self.get_json_body(required=['organisation_id'])
         organisation_id = data['organisation_id']
+        pre_verified = data.get('pre_verified', False)
+
         try:
             organisation = yield perch.Organisation.get(organisation_id)
         except couch.NotFound:
@@ -127,8 +128,10 @@ class UserOrgsHandler(BaseHandler):
         user_org = yield perch.UserOrganisation.create(
             user=self.user,
             id=organisation_id,
-            user_id=user_id
+            user_id=user_id,
+            pre_verified=pre_verified
         )
+
         user = user_org.parent
 
         msg = ("created user-organisation link, user id: {}, "
