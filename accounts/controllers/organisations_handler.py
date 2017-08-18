@@ -111,7 +111,8 @@ class OrganisationsHandler(BaseHandler):
                .format(organisation.id, data))
         audit_log.info(self, msg)
 
-        yield email.send_create_request_emails(self.user, organisation)
+        if not (self.user.is_reseller() and data.get('pre_verified', False)):
+            yield email.send_create_request_emails(self.user, organisation)
 
         self.finish({'status': 200, 'data': organisation.clean()})
 

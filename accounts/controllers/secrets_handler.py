@@ -36,7 +36,7 @@ class SecretsHandler(BaseHandler):
         service = yield perch.Service.get(service_id)
         approved = service.state == State.approved
 
-        if not (self.user.is_user(service.organisation_id) and approved):
+        if not ((self.user.is_user(service.organisation_id) or self.user.is_reseller()) and approved):
             raise HTTPError(403, 'Forbidden')
 
         secrets = yield perch.OAuthSecret.client_secrets(service_id)
