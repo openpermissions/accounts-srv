@@ -119,13 +119,17 @@ class OrganisationsHandler(BaseHandler):
     @auth.auth_required(perch.Token.valid)
     @gen.coroutine
     def get(self):
-        """Get all organisations"""
+        """Get all organisations, or filter by name if specified"""
         state = self.get_argument('state', None)
 
-        try:
-            result = yield perch.Organisation.all(state=state)
-        except exceptions.ValidationError as exc:
-            raise HTTPError(400, exc.args[0])
+        name = self.get_query_argument('name', None)
+        if name:
+            result = yield perch.Organisation.get_by_name(searchName=name)
+        else:
+            try:
+                result = yield perch.Organisation.all(state=state)
+            except exceptions.ValidationError as exc:
+                raise HTTPError(400, exc.args[0])
 
         self.finish({
             'status': 200,
