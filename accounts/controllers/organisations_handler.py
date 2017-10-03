@@ -116,20 +116,29 @@ class OrganisationsHandler(BaseHandler):
 
         self.finish({'status': 200, 'data': organisation.clean()})
 
-    @auth.auth_required(perch.Token.valid)
+    @auth.auth_optional(perch.Token.valid)
     @gen.coroutine
     def get(self):
-        """Get all organisations, or filter by name if specified"""
+        """
+        Get all organisations (authenticated)
+        Or get organisation by filtered by name (optional authentication) 
+        """
         state = self.get_argument('state', None)
-
         name = self.get_query_argument('name', None)
+
         if name:
-            result = yield perch.Organisation.get_by_name(searchName=name)
-        else:
             try:
-                result = yield perch.Organisation.all(state=state)
-            except exceptions.ValidationError as exc:
-                raise HTTPError(400, exc.args[0])
+                result = yield perch.Organisation.get_by_name(searchName=name)
+            except exceptions.NotFound as exc:
+                raise HTTPError(404, "Not found")
+        else:
+            if self.user:
+                try:
+                    result = yield perch.Organisation.all(state=state)
+                except exceptions.ValidationError as exc:
+                    raise HTTPError(400, exc.args[0])
+            else:
+                raise HTTPError(401, "Can only query by name when no valid Token sent")
 
         self.finish({
             'status': 200,
